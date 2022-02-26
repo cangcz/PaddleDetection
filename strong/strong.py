@@ -544,8 +544,8 @@ if __name__ == '__main__':
 
     # 获取相关参数
     parser = argparse.ArgumentParser()
-    parser.add_argument('--source_img_path', type=str, default='strongdata/data/Images')
-    parser.add_argument('--source_xml_path', type=str, default='strongdata/data/Annotations')
+   parser.add_argument('--source_img_path', type=str, default='PaddleDetection/strong/data/Images')
+    parser.add_argument('--source_xml_path', type=str, default='PaddleDetection/strong/data/Annotations')
     parser.add_argument('--save_img_path', type=str, default='PaddleDetection/dataset/voc/JPEGImages')
     parser.add_argument('--save_xml_path', type=str, default='PaddleDetection/dataset/voc/Annotations')
     args = parser.parse_args()
