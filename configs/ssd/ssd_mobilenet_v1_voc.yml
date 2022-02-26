@@ -2,14 +2,14 @@ architecture: SSD
 pretrain_weights: https://paddlemodels.bj.bcebos.com/object_detection/ssd_mobilenet_v1_coco_pretrained.tar
 use_gpu: true
 max_iters: 28000
-snapshot_iter: 2000
+snapshot_iter: 400
 log_iter: 1
 metric: VOC
 map_type: 11point
 save_dir: output
 weights: output/ssd_mobilenet_v1_voc/model_final
 # 20(label_class) + 1(background)
-num_classes: 21
+num_classes: 5
 
 SSD:
   backbone: MobileNet
@@ -59,9 +59,9 @@ TrainReader:
     fields: ['image', 'gt_bbox', 'gt_class']
   dataset:
     !VOCDataSet
-    anno_path: trainval.txt
-    dataset_dir: dataset/voc
-    use_default_label: true
+    anno_path: train_list.txt
+    dataset_dir: PaddleDtetection/dataset/voc
+    use_default_label: false
   sample_transforms:
   - !DecodeImage
     to_rgb: true
@@ -98,9 +98,9 @@ EvalReader:
     fields: ['image', 'gt_bbox', 'gt_class', 'im_shape', 'im_id', 'is_difficult']
   dataset:
     !VOCDataSet
-    anno_path: test.txt
-    dataset_dir: dataset/voc
-    use_default_label: true
+    anno_path: test_list.txt
+    dataset_dir: PaddleDetection/dataset/voc
+    use_default_label: false
   sample_transforms:
   - !DecodeImage
     to_rgb: true
@@ -125,8 +125,8 @@ TestReader:
     fields: ['image', 'im_id', 'im_shape']
   dataset:
     !ImageFolder
-    anno_path: test.txt
-    use_default_label: true
+    anno_path: PaddleDetection/dataset/voc/labels.txt
+    use_default_label: false
   sample_transforms:
   - !DecodeImage
     to_rgb: true
