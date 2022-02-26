@@ -60,7 +60,7 @@ TrainReader:
   dataset:
     !VOCDataSet
     anno_path: train_list.txt
-    dataset_dir: PaddleDtetection/dataset/voc
+    dataset_dir: PaddleDetection/dataset/voc/
     use_default_label: false
   sample_transforms:
   - !DecodeImage
@@ -99,7 +99,7 @@ EvalReader:
   dataset:
     !VOCDataSet
     anno_path: test_list.txt
-    dataset_dir: PaddleDetection/dataset/voc
+    dataset_dir: PaddleDetection/dataset/voc/
     use_default_label: false
   sample_transforms:
   - !DecodeImage
